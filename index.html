@@ -1768,40 +1768,45 @@
             }
         }
 
-        // Show event detail view
-        function showEventDetail(index) {
-            const events = loadFromStorage('events', defaultEvents);
-            const event = events[index];
-            
-            // Update UI with event details
-            document.getElementById('detailEventTitle').textContent = event.title;
-            document.getElementById('detailEventDate').textContent = event.date;
-            document.getElementById('detailEventDescription').textContent = event.description;
-            document.getElementById('detailEventLocation').textContent = event.location;
-            document.getElementById('detailEventTime').textContent = event.time;
-            document.getElementById('detailEventAdmission').textContent = event.admission;
-            
-            // Render gallery
-            renderEventGallery(event);
-            
-            // Show gallery controls if in edit mode
-            document.getElementById('galleryControls').style.display = isEditMode ? 'flex' : 'none';
-            
-            // Show event detail, hide other sections
-            document.getElementById('eventDetail').style.display = 'block';
-            document.getElementById('homeSection').style.display = 'none';
-            document.getElementById('events').style.display = 'none';
-            document.getElementById('team').style.display = 'none';
-            document.getElementById('visit').style.display = 'none';
-            document.querySelector('footer').style.display = 'none';
-            
-            // Update state
-            isViewingEventDetail = true;
-            currentEventIndex = index;
-            
-            // Scroll to top
-            window.scrollTo(0, 0);
-        }
+       // Show event detail view
+function showEventDetail(index) {
+    const events = loadFromStorage('events', defaultEvents);
+    const event = events[index];
+    
+    // Update UI with event details
+    document.getElementById('detailEventTitle').textContent = event.title;
+    document.getElementById('detailEventDate').textContent = event.date;
+    document.getElementById('detailEventDescription').textContent = event.description;
+    document.getElementById('detailEventLocation').textContent = event.location;
+    document.getElementById('detailEventTime').textContent = event.time;
+    document.getElementById('detailEventAdmission').textContent = event.admission;
+    
+    // Render gallery
+    renderEventGallery(event);
+    
+    // Show gallery controls if in edit mode
+    document.getElementById('galleryControls').style.display = isEditMode ? 'flex' : 'none';
+    
+    // Set up the event listener for the Add Image button
+    document.getElementById('addGalleryImage').addEventListener('click', function() {
+        document.getElementById('galleryModal').style.display = 'flex';
+    });
+    
+    // Show event detail, hide other sections
+    document.getElementById('eventDetail').style.display = 'block';
+    document.getElementById('homeSection').style.display = 'none';
+    document.getElementById('events').style.display = 'none';
+    document.getElementById('team').style.display = 'none';
+    document.getElementById('visit').style.display = 'none';
+    document.querySelector('footer').style.display = 'none';
+    
+    // Update state
+    isViewingEventDetail = true;
+    currentEventIndex = index;
+    
+    // Scroll to top
+    window.scrollTo(0, 0);
+}
         
         // Hide event detail view
         function hideEventDetail() {
