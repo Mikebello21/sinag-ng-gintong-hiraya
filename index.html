@@ -1,0 +1,1486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sinag ng Gintong Hiraya</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.1/build/qrcode.min.js"></script>
+    <style>
+        /* Base styles and variables */
+        :root {
+            --gold: #D4AF37;
+            --deep-red: #9D2933;
+            --emerald-green: #1B5E20;
+            --navy-blue: #0D3B66;
+            --cream: #F8F4E3;
+            --dark-brown: #5C4B37;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--cream);
+            color: var(--dark-brown);
+            line-height: 1.6;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,0 L100,0 L100,100 L0,100 Z' fill='none'/%3E%3Cpath d='M0,50 L100,50 M50,0 L50,100' stroke='%23D4AF3733' stroke-width='1'/%3E%3C/svg%3E");
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Typography */
+        h1, h2, h3, h4 {
+            font-family: 'Georgia', serif;
+            font-weight: 700;
+            color: var(--deep-red);
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            color: var(--gold);
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+            margin-bottom: 2rem;
+        }
+
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--gold), var(--deep-red));
+            border-radius: 2px;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        /* Header and Navigation */
+        header {
+            background: linear-gradient(135deg, var(--navy-blue), var(--emerald-green));
+            padding: 1.5rem 0;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-text {
+            font-family: 'Georgia', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--gold);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-icon {
+            margin-right: 10px;
+            font-size: 2rem;
+            color: var(--gold);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav li {
+            margin-left: 2rem;
+        }
+
+        nav a {
+            color: var(--cream);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        nav a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--gold);
+            transition: width 0.3s;
+            transition: width 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--gold);
+        }
+
+        nav a:hover:after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(13, 59, 102, 0.8), rgba(27, 94, 32, 0.8)), url('data:image/svg+xml,%3Csvg width=\"100\" height=\"100\" viewBox=\"0 0 100 100\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cpath d=\"M0,0 L100,0 L100,100 L0,100 Z\" fill=\"none\"/%3E%3Cpath d=\"M0,0 L100,100 M100,0 L0,100\" stroke=\"%23D4AF3722\" stroke-width=\"2\"/%3E%3C/svg%3E');
+            color: white;
+            text-align: center;
+            padding: 6rem 1rem;
+            margin-bottom: 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23D4AF37' fill-opacity='0.1'%3E%3Cpath d='M36,34 L24,34 L24,26 L36,26 L36,34 Z M44,24 L44,36 L16,36 L16,24 L44,24 Z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            z-index: -1;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            color: var(--gold);
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        .tagline {
+            font-size: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto;
+            color: var(--cream);
+        }
+
+        /* Sections */
+        section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        /* Events Section */
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .event-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+            position: relative;
+        }
+
+        .event-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .event-image {
+            height: 200px;
+            background-color: var(--navy-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .event-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .event-content {
+            padding: 1.5rem;
+        }
+
+        .event-date {
+            color: var(--deep-red);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Team Section */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .team-member {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            text-align: center;
+            padding: 1.5rem;
+            position: relative;
+        }
+
+        .member-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            background-color: var(--navy-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .member-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .member-name {
+            font-size: 1.5rem;
+            color: var(--navy-blue);
+            margin-bottom: 0.5rem;
+            min-height: 2.5rem;
+            border: 1px dashed transparent;
+            padding: 0.25rem;
+        }
+
+        .member-name:focus {
+            border: 1px dashed var(--gold);
+            outline: none;
+            background-color: #fff9e6;
+        }
+
+        .member-role {
+            color: var(--deep-red);
+            font-style: italic;
+        }
+
+        /* QR Code Section */
+        .qr-section {
+            background: linear-gradient(135deg, var(--navy-blue), var(--emerald-green));
+            color: white;
+            text-align: center;
+            padding: 4rem 0;
+        }
+
+        .qr-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .qr-code {
+            width: 200px;
+            height: 200px;
+            background-color: white;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .qr-code img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-brown);
+            color: var(--cream);
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .social-links a {
+            color: var(--gold);
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+        }
+
+        .social-links a:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Edit Indicators */
+        .edit-indicator {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: var(--gold);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+            z-index: 10;
+        }
+
+        .edit-indicator:hover {
+            opacity: 1;
+        }
+
+        .edit-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .event-image:hover .edit-overlay,
+        .member-photo:hover .edit-overlay {
+            opacity: 1;
+        }
+
+        /* Add and Delete Buttons */
+        .add-button {
+            display: block;
+            margin: 0 auto 2rem;
+            padding: 0.75rem 1.5rem;
+            background: var(--emerald-green);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .add-button:hover {
+            background: #144318;
+        }
+
+        .delete-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--deep-red);
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+            z-index: 10;
+            border: none;
+        }
+
+        .delete-button:hover {
+            opacity: 1;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .close-modal {
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--deep-red);
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            background: var(--gold);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .btn:hover {
+            background: #c69c2a;
+        }
+
+        .btn-secondary {
+            background: var(--navy-blue);
+        }
+
+        .btn-secondary:hover {
+            background: #0a2c4d;
+        }
+
+        /* Admin Controls */
+        .admin-controls {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        .admin-toggle {
+            width: 60px;
+            height: 60px;
+            background: var(--deep-red);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+        }
+
+        .admin-panel {
+            position: absolute;
+            bottom: 70px;
+            right: 0;
+            background: white;
+            padding: 1rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            width: 250px;
+            display: none;
+        }
+
+        .admin-panel h3 {
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .admin-panel.open {
+            display: block;
+        }
+
+        /* Password Protection */
+        .password-form {
+            margin-bottom: 1rem;
+        }
+
+        .password-form input {
+            width: 100%;
+            padding: 0.5rem;
+            margin-bottom: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 1.5rem;
+                justify-content: center;
+            }
+            
+            nav li {
+                margin: 0 1rem;
+            }
+            
+            .hero {
+                padding: 4rem 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .tagline {
+                font-size: 1.2rem;
+            }
+            
+            .events-grid,
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .admin-panel {
+                width: 200px;
+                right: -70px;
+            }
+        }
+
+        /* Filipino Patterns and Elements */
+        .cultural-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0,0 L100,0 L100,100 L0,100 Z' fill='none'/%3E%3Cpath d='M0,0 L100,100 M100,0 L0,100' stroke='%23D4AF3733' stroke-width='2'/%3E%3C/svg%3E");
+        }
+
+        .banig-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%235C4B37' fill-opacity='0.1'%3E%3Cpath d='M36,34 L24,34 L24,26 L36,26 L36,34 Z M44,24 L44,36 L16,36 L16,24 L44,24 Z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .jeepney-accent {
+            height: 10px;
+            background: linear-gradient(90deg, var(--gold), var(--deep-red), var(--emerald-green), var(--navy-blue));
+            margin: 1rem 0;
+            border-radius: 5px;
+        }
+
+        .save-notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--emerald-green);
+            color: white;
+            padding: 1rem;
+            border-radius: 5px;
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <a href="#" class="logo-text">
+                    <i class="fas fa-sun logo-icon"></i>
+                    Sinag ng Gintong Hiraya
+                </a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#events">Events</a></li>
+                    <li><a href="#team">Our Team</a></li>
+                    <li><a href="#visit">Visit Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <section class="hero cultural-pattern">
+        <div class="container">
+            <h1>Sinag ng Gintong Hiraya</h1>
+            <p class="tagline">Celebrating the richness of Filipino creativity, heritage, and cultural expression through art, music, and community events.</p>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section id="events" class="container">
+        <div class="section-title">
+            <h2>Upcoming Events</h2>
+            <p>Join us in celebrating Filipino culture and creativity</p>
+        </div>
+        <div class="events-grid" id="eventsContainer">
+            <!-- Events will be loaded here dynamically -->
+        </div>
+        <button class="add-button" id="addEventBtn" style="display: none;">+ Add New Event</button>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="container">
+        <div class="section-title">
+            <h2>Our Team</h2>
+            <p>Passionate individuals dedicated to promoting Filipino culture</p>
+        </div>
+        <div class="team-grid" id="teamContainer">
+            <!-- Team members will be loaded here dynamically -->
+        </div>
+        <button class="add-button" id="addMemberBtn" style="display: none;">+ Add New Team Member</button>
+    </section>
+
+    <!-- QR Code Section -->
+    <section id="visit" class="qr-section">
+        <div class="container qr-container">
+            <h2>Scan to Visit</h2>
+            <div class="jeepney-accent"></div>
+            <p>Scan this QR code to visit our website on your mobile device</p>
+            <div class="qr-code" id="qrCode">
+                <!-- QR code will be generated here -->
+            </div>
+            <p>Share our cultural journey with friends and family</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container footer-content">
+            <div class="logo">
+                <a href="#" class="logo-text">
+                    <i class="fas fa-sun logo-icon"></i>
+                    Sinag ng Gintong Hiraya
+                </a>
+            </div>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+            <p>&copy; 2023 Sinag ng Gintong Hiraya. Celebrating Filipino Culture and Creativity.</p>
+        </div>
+    </footer>
+
+    <!-- Save Notification -->
+    <div class="save-notification" id="saveNotification">
+        Changes saved successfully!
+    </div>
+
+    <!-- Admin Controls -->
+    <div class="admin-controls">
+        <div class="admin-toggle" id="adminToggle">
+            <i class="fas fa-lock" id="adminIcon"></i>
+        </div>
+        <div class="admin-panel" id="adminPanel">
+            <h3>Admin Panel</h3>
+            <div class="password-form" id="passwordForm">
+                <input type="password" id="adminPassword" placeholder="Enter admin password">
+                <button class="btn" id="passwordSubmit">Submit</button>
+            </div>
+            <div id="adminOptions" style="display: none;">
+                <p>Edit mode activated</p>
+                <button class="btn" id="regenerateQR">Regenerate QR Code</button>
+                <button class="btn" id="saveChanges">Save Changes</button>
+                <button class="btn btn-secondary" id="exitEditMode">Exit Edit Mode</button>
+                <button class="btn" id="resetContent">Reset All Content</button>
+                <button class="btn" id="changePassword">Change Password</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Event Edit Modal -->
+    <div id="eventModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Edit Event</h3>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="form-group">
+                <label for="eventTitle">Event Title</label>
+                <input type="text" id="eventTitle">
+            </div>
+            <div class="form-group">
+                <label for="eventDate">Date</label>
+                <input type="text" id="eventDate">
+            </div>
+            <div class="form-group">
+                <label for="eventDescription">Description</label>
+                <textarea id="eventDescription"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="eventImage">Upload Image</label>
+                <input type="file" id="eventImage" accept="image/*">
+            </div>
+            <button class="btn" id="saveEventChanges">Save Changes</button>
+        </div>
+    </div>
+
+    <!-- Team Edit Modal -->
+    <div id="teamModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Edit Team Member</h3>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="form-group">
+                <label for="memberName">Name</label>
+                <input type="text" id="memberName">
+            </div>
+            <div class="form-group">
+                <label for="memberRole">Role</label>
+                <input type="text" id="memberRole">
+            </div>
+            <div class="form-group">
+                <label for="memberImage">Upload Photo</label>
+                <input type="file" id="memberImage" accept="image/*">
+            </div>
+            <button class="btn" id="saveTeamChanges">Save Changes</button>
+        </div>
+    </div>
+
+    <!-- Change Password Modal -->
+    <div id="passwordModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Change Admin Password</h3>
+                <span class="close-modal">&times;</span>
+            </div>
+            <div class="form-group">
+                <label for="currentPassword">Current Password</label>
+                <input type="password" id="currentPassword">
+            </div>
+            <div class="form-group">
+                <label for="newPassword">New Password</label>
+                <input type="password" id="newPassword">
+            </div>
+            <div class="form-group">
+                <label for="confirmPassword">Confirm New Password</label>
+                <input type="password" id="confirmPassword">
+            </div>
+            <button class="btn" id="submitPasswordChange">Change Password</button>
+        </div>
+    </div>
+
+    <script>
+        // Variables to track which item is being edited
+        let currentEventIndex = null;
+        let currentTeamIndex = null;
+        let isEditMode = false;
+        const ADMIN_PASSWORD_KEY = 'admin_password';
+        const DEFAULT_PASSWORD = 'admin123'; // Default password, should be changed in production
+        
+        // Default data
+        const defaultEvents = [
+            {
+                title: "Harvest Moon Festival",
+                date: "October 15, 2023",
+                description: "An evening of traditional Filipino music, dance, and food celebrating the bountiful harvest season.",
+                icon: "fas fa-music"
+            },
+            {
+                title: "Artisans of the Philippines",
+                date: "November 5, 2023",
+                description: "Exhibition and workshop featuring traditional Filipino crafts including weaving, pottery, and woodcarving.",
+                icon: "fas fa-paint-brush"
+            },
+            {
+                title: "Flavors of the Islands",
+                date: "December 10, 2023",
+                description: "A culinary journey through the Philippines with cooking demonstrations and food tasting.",
+                icon: "fas fa-utensils"
+            }
+        ];
+        
+        const defaultTeam = [
+            {
+                name: "Maria Santos",
+                role: "Cultural Director",
+                icon: "fas fa-user"
+            },
+            {
+                name: "Juan dela Cruz",
+                role: "Events Coordinator",
+                icon: "fas fa-user"
+            },
+            {
+                name: "Liza Aquino",
+                role: "Art Curator",
+                icon: "fas fa-user"
+            },
+            {
+                name: "Miguel Reyes",
+                role: "Community Outreach",
+                icon: "fas fa-user"
+            }
+        ];
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Generate QR code
+            generateQRCode();
+            
+            // Initialize admin password if not set
+            if (!localStorage.getItem(ADMIN_PASSWORD_KEY)) {
+                localStorage.setItem(ADMIN_PASSWORD_KEY, DEFAULT_PASSWORD);
+            }
+            
+            // Load saved content from local storage or use defaults
+            loadContent();
+            
+            // Set up event listeners
+            setupEventListeners();
+            
+            // Add subtle animation to event cards on scroll
+            initScrollAnimations();
+        });
+
+        // Generate QR code for the actual website URL
+        function generateQRCode() {
+            const qrContainer = document.getElementById('qrCode');
+            
+            // Use the actual website URL instead of localhost
+            // In a real scenario, this would be your domain name
+            // For example: "https://www.sinagnggintonghiraya.com"
+            const websiteUrl = window.location.origin || "https://www.sinagnggintonghiraya.com";
+            
+            // Clear previous QR code
+            qrContainer.innerHTML = '';
+            
+            // Generate new QR code
+            QRCode.toCanvas(websiteUrl, { width: 180 }, function(err, canvas) {
+                if (err) {
+                    console.error('QR code generation failed:', err);
+                    qrContainer.innerHTML = '<i class="fas fa-qrcode"></i>';
+                    return;
+                }
+                
+                qrContainer.appendChild(canvas);
+            });
+        }
+
+        // Load saved content from local storage or use defaults
+        function loadContent() {
+            // Load events
+            let events = loadFromStorage('events', defaultEvents);
+            renderEvents(events);
+            
+            // Load team members
+            let teamMembers = loadFromStorage('teamMembers', defaultTeam);
+            renderTeamMembers(teamMembers);
+        }
+        
+        // Load data from localStorage or use default data
+        function loadFromStorage(key, defaultData) {
+            const storedData = localStorage.getItem(key);
+            return storedData ? JSON.parse(storedData) : defaultData;
+        }
+        
+        // Save data to localStorage
+        function saveToStorage(key, data) {
+            localStorage.setItem(key, JSON.stringify(data));
+        }
+
+        // Render events to the page
+        function renderEvents(events) {
+            const eventsContainer = document.getElementById('eventsContainer');
+            eventsContainer.innerHTML = '';
+            
+            events.forEach((event, index) => {
+                const eventCard = document.createElement('div');
+                eventCard.className = 'event-card';
+                eventCard.innerHTML = `
+                    <div class="event-image">
+                        <i class="${event.icon || 'fas fa-calendar'}"></i>
+                        ${isEditMode ? `
+                        <div class="edit-overlay">
+                            <button class="btn edit-event-btn" data-index="${index}">Edit Image</button>
+                        </div>
+                        <button class="delete-button delete-event" data-index="${index}">&times;</button>
+                        ` : ''}
+                    </div>
+                    <div class="event-content">
+                        <p class="event-date" ${isEditMode ? 'contenteditable="true"' : ''}>${event.date}</p>
+                        <h3 ${isEditMode ? 'contenteditable="true"' : ''}>${event.title}</h3>
+                        <p ${isEditMode ? 'contenteditable="true"' : ''}>${event.description}</p>
+                    </div>
+                    ${isEditMode ? `
+                    <div class="edit-indicator edit-event-btn" data-index="${index}">
+                        <i class="fas fa-edit"></i>
+                    </div>
+                    ` : ''}
+                `;
+                
+                // If there's a saved image, use it
+                if (event.image) {
+                    const eventImage = eventCard.querySelector('.event-image');
+                    eventImage.innerHTML = '';
+                    const img = document.createElement('img');
+                    img.src = event.image;
+                    eventImage.appendChild(img);
+                    
+                    // Add edit overlay and delete button back
+                    if (isEditMode) {
+                        const overlay = document.createElement('div');
+                        overlay.className = 'edit-overlay';
+                        const button = document.createElement('button');
+                        button.className = 'btn edit-event-btn';
+                        button.setAttribute('data-index', index);
+                        button.textContent = 'Edit Image';
+                        overlay.appendChild(button);
+                        eventImage.appendChild(overlay);
+                        
+                        const deleteBtn = document.createElement('button');
+                        deleteBtn.className = 'delete-button delete-event';
+                        deleteBtn.setAttribute('data-index', index);
+                        deleteBtn.innerHTML = '&times;';
+                        eventImage.appendChild(deleteBtn);
+                    }
+                }
+                
+                eventsContainer.appendChild(eventCard);
+            });
+            
+            // Show/hide add button based on edit mode
+            document.getElementById('addEventBtn').style.display = isEditMode ? 'block' : 'none';
+            
+            // Add event listeners for editable content
+            if (isEditMode) {
+                addEditableListeners();
+            }
+        }
+        
+        // Render team members to the page
+        function renderTeamMembers(teamMembers) {
+            const teamContainer = document.getElementById('teamContainer');
+            teamContainer.innerHTML = '';
+            
+            teamMembers.forEach((member, index) => {
+                const teamMember = document.createElement('div');
+                teamMember.className = 'team-member';
+                teamMember.innerHTML = `
+                    <div class="member-photo">
+                        <i class="${member.icon || 'fas fa-user'}"></i>
+                        ${isEditMode ? `
+                        <div class="edit-overlay">
+                            <button class="btn edit-team-btn" data-index="${index}">Change Photo</button>
+                        </div>
+                        <button class="delete-button delete-member" data-index="${index}">&times;</button>
+                        ` : ''}
+                    </div>
+                    <h3 class="member-name" ${isEditMode ? 'contenteditable="true"' : ''}>${member.name}</h3>
+                    <p class="member-role" ${isEditMode ? 'contenteditable="true"' : ''}>${member.role}</p>
+                    ${isEditMode ? `
+                    <div class="edit-indicator edit-team-btn" data-index="${index}">
+                        <i class="fas fa-edit"></i>
+                    </div>
+                    ` : ''}
+                `;
+                
+                // If there's a saved photo, use it
+                if (member.photo) {
+                    const memberPhoto = teamMember.querySelector('.member-photo');
+                    memberPhoto.innerHTML = '';
+                    const img = document.createElement('img');
+                    img.src = member.photo;
+                    memberPhoto.appendChild(img);
+                    
+                    // Add edit overlay and delete button back
+                    if (isEditMode) {
+                        const overlay = document.createElement('div');
+                        overlay.className = 'edit-overlay';
+                        const button = document.createElement('button');
+                        button.className = 'btn edit-team-btn';
+                        button.setAttribute('data-index', index);
+                        button.textContent = 'Change Photo';
+                        overlay.appendChild(button);
+                        memberPhoto.appendChild(overlay);
+                        
+                        const deleteBtn = document.createElement('button');
+                        deleteBtn.className = 'delete-button delete-member';
+                        deleteBtn.setAttribute('data-index', index);
+                        deleteBtn.innerHTML = '&times;';
+                        memberPhoto.appendChild(deleteBtn);
+                    }
+                }
+                
+                teamContainer.appendChild(teamMember);
+            });
+            
+            // Show/hide add button based on edit mode
+            document.getElementById('addMemberBtn').style.display = isEditMode ? 'block' : 'none';
+            
+            // Add event listeners for editable content
+            if (isEditMode) {
+                addEditableListeners();
+            }
+        }
+        
+        // Add event listeners for editable content
+        function addEditableListeners() {
+            // Team member names and roles
+            document.querySelectorAll('.member-name, .member-role').forEach(element => {
+                element.addEventListener('blur', function() {
+                    const teamMemberElement = this.closest('.team-member');
+                    const index = Array.from(teamMemberElement.parentElement.children).indexOf(teamMemberElement);
+                    const teamMembers = loadFromStorage('teamMembers', defaultTeam);
+                    
+                    if (this.classList.contains('member-name')) {
+                        teamMembers[index].name = this.textContent;
+                    } else {
+                        teamMembers[index].role = this.textContent;
+                    }
+                    
+                    saveToStorage('teamMembers', teamMembers);
+                });
+            });
+            
+            // Event details
+            document.querySelectorAll('.event-content h3, .event-content p').forEach(element => {
+                element.addEventListener('blur', function() {
+                    const eventCard = this.closest('.event-card');
+                    const index = Array.from(eventCard.parentElement.children).indexOf(eventCard);
+                    const events = loadFromStorage('events', defaultEvents);
+                    
+                    if (this.classList.contains('event-date')) {
+                        events[index].date = this.textContent;
+                    } else if (this.tagName === 'H3') {
+                        events[index].title = this.textContent;
+                    } else if (this.tagName === 'P' && !this.classList.contains('event-date')) {
+                        events[index].description = this.textContent;
+                    }
+                    
+                    saveToStorage('events', events);
+                });
+            });
+        }
+
+        // Set up all event listeners
+        function setupEventListeners() {
+            // Admin panel toggle
+            document.getElementById('adminToggle').addEventListener('click', function() {
+                document.getElementById('adminPanel').classList.toggle('open');
+            });
+            
+            // Password submission
+            document.getElementById('passwordSubmit').addEventListener('click', function() {
+                const password = document.getElementById('adminPassword').value;
+                const storedPassword = localStorage.getItem(ADMIN_PASSWORD_KEY);
+                
+                if (password === storedPassword) {
+                    enableEditMode();
+                } else {
+                    alert('Incorrect password');
+                }
+            });
+            
+            // Save changes button
+            document.getElementById('saveChanges').addEventListener('click', function() {
+                saveAllChanges();
+                showNotification('Changes saved successfully!');
+            });
+            
+            // Exit edit mode button
+            document.getElementById('exitEditMode').addEventListener('click', function() {
+                disableEditMode();
+            });
+            
+            // Regenerate QR code
+            document.getElementById('regenerateQR').addEventListener('click', generateQRCode);
+            
+            // Reset all content
+            document.getElementById('resetContent').addEventListener('click', function() {
+                if (confirm('Are you sure you want to reset all content? This cannot be undone.')) {
+                    // Clear all saved content
+                    localStorage.removeItem('events');
+                    localStorage.removeItem('teamMembers');
+                    
+                    // Reload the page
+                    location.reload();
+                }
+            });
+            
+            // Change password
+            document.getElementById('changePassword').addEventListener('click', function() {
+                document.getElementById('passwordModal').style.display = 'flex';
+            });
+            
+            // Submit password change
+            document.getElementById('submitPasswordChange').addEventListener('click', function() {
+                const currentPassword = document.getElementById('currentPassword').value;
+                const newPassword = document.getElementById('newPassword').value;
+                const confirmPassword = document.getElementById('confirmPassword').value;
+                const storedPassword = localStorage.getItem(ADMIN_PASSWORD_KEY);
+                
+                if (currentPassword !== storedPassword) {
+                    alert('Current password is incorrect');
+                    return;
+                }
+                
+                if (newPassword !== confirmPassword) {
+                    alert('New passwords do not match');
+                    return;
+                }
+                
+                localStorage.setItem(ADMIN_PASSWORD_KEY, newPassword);
+                alert('Password changed successfully');
+                document.getElementById('passwordModal').style.display = 'none';
+            });
+            
+            // Add event button
+            document.getElementById('addEventBtn').addEventListener('click', function() {
+                const events = loadFromStorage('events', defaultEvents);
+                events.push({
+                    title: "New Event",
+                    date: "Date TBA",
+                    description: "Event description",
+                    icon: "fas fa-calendar"
+                });
+                saveToStorage('events', events);
+                renderEvents(events);
+            });
+            
+            // Add team member button
+            document.getElementById('addMemberBtn').addEventListener('click', function() {
+                const teamMembers = loadFromStorage('teamMembers', defaultTeam);
+                teamMembers.push({
+                    name: "New Member",
+                    role: "Role TBA",
+                    icon: "fas fa-user"
+                });
+                saveToStorage('teamMembers', teamMembers);
+                renderTeamMembers(teamMembers);
+            });
+            
+            // Event edit buttons (delegated event handling)
+            document.addEventListener('click', function(e) {
+                // Event edit buttons
+                if (e.target.classList.contains('edit-event-btn')) {
+                    if (!isEditMode) {
+                        alert('Please enable edit mode first');
+                        return;
+                    }
+                    
+                    const index = parseInt(e.target.getAttribute('data-index'));
+                    openEventModal(index);
+                }
+                
+                // Team edit buttons
+                if (e.target.classList.contains('edit-team-btn')) {
+                    if (!isEditMode) {
+                        alert('Please enable edit mode first');
+                        return;
+                    }
+                    
+                    const index = parseInt(e.target.getAttribute('data-index'));
+                    openTeamModal(index);
+                }
+                
+                // Delete event buttons
+                if (e.target.classList.contains('delete-event')) {
+                    const index = parseInt(e.target.getAttribute('data-index'));
+                    deleteEvent(index);
+                }
+                
+                // Delete team member buttons
+                if (e.target.classList.contains('delete-member')) {
+                    const index = parseInt(e.target.getAttribute('data-index'));
+                    deleteTeamMember(index);
+                }
+            });
+            
+            // Close modals
+            document.querySelectorAll('.close-modal').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    this.closest('.modal').style.display = 'none';
+                });
+            });
+            
+            // Save event changes
+            document.getElementById('saveEventChanges').addEventListener('click', saveEventChanges);
+            
+            // Save team changes
+            document.getElementById('saveTeamChanges').addEventListener('click', saveTeamChanges);
+            
+            // Close modals when clicking outside
+            window.addEventListener('click', function(event) {
+                if (event.target.classList.contains('modal')) {
+                    event.target.style.display = 'none';
+                }
+            });
+        }
+
+        // Enable edit mode
+        function enableEditMode() {
+            isEditMode = true;
+            document.getElementById('passwordForm').style.display = 'none';
+            document.getElementById('adminOptions').style.display = 'block';
+            document.getElementById('adminIcon').className = 'fas fa-unlock';
+            document.getElementById('adminToggle').style.background = 'var(--emerald-green)';
+            
+            // Re-render to show edit controls
+            const events = loadFromStorage('events', defaultEvents);
+            const teamMembers = loadFromStorage('teamMembers', defaultTeam);
+            renderEvents(events);
+            renderTeamMembers(teamMembers);
+        }
+        
+        // Disable edit mode
+        function disableEditMode() {
+            isEditMode = false;
+            document.getElementById('adminPanel').classList.remove('open');
+            document.getElementById('passwordForm').style.display = 'block';
+            document.getElementById('adminOptions').style.display = 'none';
+            document.getElementById('adminIcon').className = 'fas fa-lock';
+            document.getElementById('adminToggle').style.background = 'var(--deep-red)';
+            document.getElementById('adminPassword').value = '';
+            
+            // Re-render to hide edit controls
+            const events = loadFromStorage('events', defaultEvents);
+            const teamMembers = loadFromStorage('teamMembers', defaultTeam);
+            renderEvents(events);
+            renderTeamMembers(teamMembers);
+        }
+        
+        // Save all changes
+        function saveAllChanges() {
+            // This function is called when the "Save Changes" button is clicked
+            // All changes are already saved automatically as users edit content
+            // So we just show a confirmation message
+            showNotification('All changes have been saved!');
+        }
+        
+        // Show notification
+        function showNotification(message) {
+            const notification = document.getElementById('saveNotification');
+            notification.textContent = message;
+            notification.style.display = 'block';
+            
+            setTimeout(() => {
+                notification.style.display = 'none';
+            }, 3000);
+        }
+
+        // Initialize scroll animations
+        function initScrollAnimations() {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            const eventCards = document.querySelectorAll('.event-card');
+            eventCards.forEach(card => {
+                card.style.opacity = 0;
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(card);
+            });
+        }
+
+        // Delete an event
+        function deleteEvent(index) {
+            if (confirm('Are you sure you want to delete this event?')) {
+                const events = loadFromStorage('events', defaultEvents);
+                events.splice(index, 1);
+                saveToStorage('events', events);
+                renderEvents(events);
+            }
+        }
+        
+        // Delete a team member
+        function deleteTeamMember(index) {
+            if (confirm('Are you sure you want to delete this team member?')) {
+                const teamMembers = loadFromStorage('teamMembers', defaultTeam);
+                teamMembers.splice(index, 1);
+                saveToStorage('teamMembers', teamMembers);
+                renderTeamMembers(teamMembers);
+            }
+        }
+
+        // Modal functions
+        function openEventModal(index) {
+            currentEventIndex = index;
+            const events = loadFromStorage('events', defaultEvents);
+            const event = events[index];
+            
+            document.getElementById('eventTitle').value = event.title;
+            document.getElementById('eventDate').value = event.date;
+            document.getElementById('eventDescription').value = event.description;
+            
+            document.getElementById('eventModal').style.display = 'flex';
+        }
+
+        function openTeamModal(index) {
+            currentTeamIndex = index;
+            const teamMembers = loadFromStorage('teamMembers', defaultTeam);
+            const member = teamMembers[index];
+            
+            document.getElementById('memberName').value = member.name;
+            document.getElementById('memberRole').value = member.role;
+            
+            document.getElementById('teamModal').style.display = 'flex';
+        }
+
+        function saveEventChanges() {
+            if (currentEventIndex !== null) {
+                const eventTitle = document.getElementById('eventTitle').value;
+                const eventDate = document.getElementById('eventDate').value;
+                const eventDescription = document.getElementById('eventDescription').value;
+                
+                const events = loadFromStorage('events', defaultEvents);
+                events[currentEventIndex].title = eventTitle;
+                events[currentEventIndex].date = eventDate;
+                events[currentEventIndex].description = eventDescription;
+                
+                // Handle image upload
+                const fileInput = document.getElementById('eventImage');
+                if (fileInput.files && fileInput.files[0]) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        events[currentEventIndex].image = e.target.result;
+                        saveToStorage('events', events);
+                        renderEvents(events);
+                    }
+                    reader.readAsDataURL(fileInput.files[0]);
+                } else {
+                    saveToStorage('events', events);
+                    renderEvents(events);
+                }
+                
+                document.getElementById('eventModal').style.display = 'none';
+                showNotification('Event changes saved!');
+            }
+        }
+
+        function saveTeamChanges() {
+            if (currentTeamIndex !== null) {
+                const memberName = document.getElementById('memberName').value;
+                const memberRole = document.getElementById('memberRole').value;
+                
+                const teamMembers = loadFromStorage('teamMembers', defaultTeam);
+                teamMembers[currentTeamIndex].name = memberName;
+                teamMembers[currentTeamIndex].role = memberRole;
+                
+                // Handle image upload
+                const fileInput = document.getElementById('memberImage');
+                if (fileInput.files && fileInput.files[0]) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        teamMembers[currentTeamIndex].photo = e.target.result;
+                        saveToStorage('teamMembers', teamMembers);
+                        renderTeamMembers(teamMembers);
+                    }
+                    reader.readAsDataURL(fileInput.files[0]);
+                } else {
+                    saveToStorage('teamMembers', teamMembers);
+                    renderTeamMembers(teamMembers);
+                }
+                
+                document.getElementById('teamModal').style.display = 'none';
+                showNotification('Team changes saved!');
+            }
+        }
+    </script>
+</body>
+</html>
